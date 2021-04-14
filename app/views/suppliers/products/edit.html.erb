@@ -1,0 +1,15 @@
+<div class="card-body">
+  <%= form_for [:suppliers, @product] do |f| %>
+    
+    <%= f.text_field :image, placeholder: "image", id: 'comment_input' %>
+    <%= f.text_field :name, placeholder: "name", id: 'comment_input' %>
+    <%= f.text_field :description, placeholder: "description", id: 'comment_input' %>
+    <%= f.text_field :price, placeholder: "price", id: 'comment_input' %>
+
+    <%= f.submit 'create', class: 'btn btn-success' %>
+    
+  <% end %>
+
+  <div class="margin-16px"></div>
+
+</div>
