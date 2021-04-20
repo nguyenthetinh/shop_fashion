@@ -1,5 +1,5 @@
 
-<%= stylesheet_link_tag "common/main"%>
+<%= stylesheet_link_tag "home"%>
 <%= stylesheet_link_tag "common/animate"%>
 <%= stylesheet_link_tag "common/responsive"%>
 
@@ -181,7 +181,11 @@
                           <i class="fa fa-plus-square"></i>Edit</a>
                         <%end%>
                       </li>
-                      <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                      <li>
+                        <%=link_to suppliers_product_path(product.id, lass: 'hihih'), method: :delete, data: {confirm: 'Are you sure'} do%>
+                          <i class="fa fa-plus-square"></i>Delete</a>
+                        <%end%>
+                      </li>
                     </ul>
                   </div>
                 </div>

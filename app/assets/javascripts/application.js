@@ -14,10 +14,14 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
 //= require toastr
 //= require jquery
 //= require jquery_ujs
 //= require toastr
+
+//= require bootstrap
+
 
 $(document).ready(function() {
   removeNotification();
@@ -33,5 +37,9 @@ $(document).ready(function() {
       $('.notification').fadeOut();
     }
   };
+
+  $(".nav-tabs a").click(function(){
+    $(this).tab('show');
+  });
 
 });

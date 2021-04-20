@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.all.order(created_at: :desc)
   end
 
 end

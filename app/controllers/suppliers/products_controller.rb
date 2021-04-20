@@ -1,8 +1,8 @@
 class Suppliers::ProductsController < ApplicationController
-  before_action :find_product, only: [:update, :edit]
+  before_action :find_product, only: [:update, :edit, :destroy]
 
   def index
-    @products = Product.all
+    @products = current_supplier.products.all.order(created_at: :desc)
   end
 
   def new
@@ -10,7 +10,8 @@ class Suppliers::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(param_product)
+    @product = current_supplier.products.build(param_product)
+
     if @product.save
       flash[:success] = 'Product added!'
       redirect_to suppliers_products_path
@@ -31,6 +32,12 @@ class Suppliers::ProductsController < ApplicationController
       flash[:alert] = "Failed to create product!"
       render :edit
     end
+  end
+  
+  def destroy
+    @product.destroy!
+    flash[:success] = 'delete success'
+    redirect_to suppliers_products_path
   end
 
   def find_product
