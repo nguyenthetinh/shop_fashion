@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "common/carts"%>
+
+<div class="container cart-content">
+  <div class="row content-product">
+    <% @carts.each do |product| %>
+      <div class="col-sm-3">
+        <div class="product-image-wrapper">
+          <div class="single-products">
+            <div class="productinfo text-center">
+              <%=image_tag 'shop/product12.jpg'%>
+              <h2>$<%=product.price%></h2>
+              <p><%=product.name%></p>
+              <div class="add-remote">
+                <button class="btn btn-default remote-cart add-to-cart" id="remote_<%=product.id%>" name="<%=product.id%>">
+                  <i class="fa fa-shopping-cart"></i>remove from cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

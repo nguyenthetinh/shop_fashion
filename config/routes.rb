@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"
 
+  # routes carts
+  get 'carts/show'
+  delete 'carts/remove_from_cart/:id', to: 'carts#remove_from_cart', as: 'remove_from_cart'
+  post 'carts/add_to_cart/:id', to: 'carts#add_to_cart', as: 'add_to_cart'
+
+
   namespace :suppliers do
     resources :products do
       root "products#index"

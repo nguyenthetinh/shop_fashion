@@ -41,7 +41,18 @@
               <li><a href=""><i class="fa fa-user"></i> Account</a></li>
               <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
               <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-              <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+              <li class="cart-item">
+                <%= link_to carts_show_path do%>
+                  <i class="fa fa-shopping-cart"></i> 
+                  <span class="size-cart">
+                    <% if session[:cart].size > 99  %>
+                      99
+                    <% else %>
+                      <%= session[:cart].size%>
+                    <% end %>
+                  </span>
+                <%end%>
+              </li>
               <% if user_signed_in? || supplier_signed_in? %>
                 <li>
                   <%= link_to destroy_user_session_path, method: :delete, data: {confirm: "LogOut"} do%>

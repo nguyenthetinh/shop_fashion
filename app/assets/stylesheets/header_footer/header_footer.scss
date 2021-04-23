@@ -2,6 +2,24 @@
 *******Header CSS******
 **************************/
 
+.cart-item {
+  position: relative;
+  .size-cart {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -10px;
+    right: 3px;
+    background: #fd4d4d;
+    color: white;
+    border-radius: 100%;
+    font-size: 12px;
+  }
+}
+
 .shop-menu-right {
   display: flex;
   align-items: center;
@@ -145,7 +163,7 @@
   background: #FFFFFF;
   color: #696763;
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   padding: 0;
   padding-right: 0;

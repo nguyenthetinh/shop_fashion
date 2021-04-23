@@ -15,15 +15,14 @@
 //= require turbolinks
 //= require_tree .
 
-//= require toastr
 //= require jquery
 //= require jquery_ujs
-//= require toastr
 
 //= require bootstrap
 
 
 $(document).ready(function() {
+  
   removeNotification();
   
   function removeNotification() {
@@ -41,5 +40,56 @@ $(document).ready(function() {
   $(".nav-tabs a").click(function(){
     $(this).tab('show');
   });
+
+  $(".add-remote").delegate(".add-cart", "click", function(){
+    id = $(this).attr('name')
+
+    $.ajax({
+      url: "/carts/add_to_cart/" + id,
+      dataType: 'json',
+      type: 'POST',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      success: function(response) {
+        if (response.success == "success") {
+          console.log("assas")
+          $('#remote_' + id).css({"display": "inline-block"})
+          $('#add_' + id).hide()
+
+          $('#remote_a_' + id).css({"display": "inline-block"})
+          $('#add_a_' + id).hide()
+          $(".size-cart").text(response.size_cart)
+        } else {
+          console.log("error")
+        }
+      }
+    })
+    
+
+  });
+
+  $(".add-remote").delegate(".remote-cart", "click", function(){
+    
+    id = $(this).attr('name')
+
+    $.ajax({
+      url: "/carts/remove_from_cart/" + id,
+      dataType: 'json',
+      type: 'DELETE',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      success: function(response) {
+        if (response.success == "success") {
+          $('#remote_' + id).hide()
+          $('#add_' + id).css({"display": "inline-block"})
+
+          $('#remote_a_' + id).hide()
+          $('#add_a_' + id).css({"display": "inline-block"})
+          $(".size-cart").text(response.size_cart)
+        } else {
+          console.log("error")
+        }
+      }
+    })
+  });
+
 
 });
