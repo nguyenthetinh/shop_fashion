@@ -59,8 +59,4 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-set :stage, :production
-set :rails_env, :production
-set :deploy_to, "/apps/shopfashion"
-set :branch, :config_deploy
-server "18.222.95.116", user: "www" , roles: %w(web app db)
+server '18.116.14.185', user: 'deploy', roles: %w{web app db}
